@@ -554,6 +554,11 @@ def get_data(args, preprocess_fns, epoch=0, tokenizer=None):
     if args.val_data:
         data["val"] = get_dataset_fn(args.val_data, args.dataset_type)(
             args, preprocess_val, is_train=False, tokenizer=tokenizer)
+        
+    if args.clients_data:
+        data["val2"] = get_dataset_fn(args.val_data2, args.dataset_type)(
+            args, preprocess_val, is_train=False, tokenizer=tokenizer)
+
 
     if args.imagenet_val is not None:
         data["imagenet-val"] = get_imagenet(args, preprocess_fns, "val")
